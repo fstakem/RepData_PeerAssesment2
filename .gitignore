@@ -1,0 +1,42 @@
+# R History files #
+#-----------------#
+.Rhistory
+
+# R data files from past sessions #
+#---------------------------------#
+.Rdata
+
+
+# Project files #
+#---------------#
+*.tmproj
+.classpath
+.project
+.settings/
+
+# Packages #
+#----------#
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Backup files #
+#--------------#
+*.*~
+*.*#
+
+# OS generated files #
+#--------------------#
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Raw data #
+#----------#
+raw_data/
