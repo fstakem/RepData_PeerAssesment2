@@ -1,0 +1,62 @@
+## The Effect of Weather on People and Property 
+#### A study on weather in the USA from 1950 to 2011
+##### By: Fred Stakem
+##### Date: 8.20.14
+
+<br />
+
+### Synopsis
+
+<br />
+
+### Data Processing
+
+Set the parameters.
+```{r}
+debug <- TRUE
+working_dir <- '~/projects/CourseraDataScience/projects/reproducible_research/project_2/src/'
+```
+
+Setup the environment.
+```{r}
+setwd(working_dir)
+library(R.utils)
+```
+
+Get the data and unzip it.
+```{r}
+data_url <- 'https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2'
+download_path <- '../raw_data/storm.csv.bz2'
+data_file <- '../raw_data/debug_storm.csv'
+
+if(!file.exists(data_file))
+{
+    if(!file.exists(download_path))
+    {
+        download.file(data_url, download_path, method='curl')
+    }
+    
+    bunzip2(download_path, remove=FALSE)
+}
+```
+
+Read the data into a data frame.
+```{r}
+raw_data <- read.table(data_file, fill=TRUE, sep=',', header=TRUE)
+```
+
+Question 1
+*Across the United States, which types of events (as indicated in the EVTYPE variable) are most harmful with respect to population health?*
+
+```{r}
+
+```
+Question 2
+*Across the United States, which types of events have the greatest economic consequences?*
+<br />
+
+### Results
+
+
+
+
