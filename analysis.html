@@ -67,12 +67,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="synopsis" class="section level3">
 <h3>Synopsis</h3>
+<p>Every year extreme weather in America caused a significant amount of casualties and damage to property. The purpose of this analysis was to calculate the amount of casualties and damage for different types of weather events. The data for this analysis was obtained from the NOAA storm database showing severe weather events from 1950 to November 2011. The results show tornados as the leading cause of casualties and floods as the leading cause of damage. It it recommended that the majority of money spent monitoring weather conditions should be allocated to tornados, floods, and hurricanes because they have the greatest effect on property and people.</p>
 <p><br /></p>
 </div>
 <div id="data-processing" class="section level3">
 <h3>Data Processing</h3>
 <p>The first part of the data processing consisted of a script to download and extract the compressed data file from the following link.</p>
-<p>Data url: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2">https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2</a><br />For sake of simplicity this code was ommited. Once the data was downloaded and extracted the file was read into memory.</p>
+<p>Data url: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2">https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2</a></p>
+<p>For sake of simplicity this code was ommited. Once the data was downloaded and extracted the file was read into memory.</p>
 <pre class="r"><code>data_file &lt;- './raw_data/storm.csv'
 raw_data &lt;- read.table(data_file, fill=TRUE, sep=',', header=TRUE)</code></pre>
 <p>Once the data was in R a decent amount of time was spent researching the EVTYPE column that contained the weather events. A first glance at the weather events made them seem to be well formed. After working with the data a bit it was realized that many different labels were given to the same weather events. The most important events for this data analysis were capture in a map that also has the regex used to search for the event. This can be seen below. This list was constantly modified as the analysis progressed so that the most import events were included.</p>
@@ -203,7 +205,7 @@ final_economic_loss &lt;- data.frame(event=filtered_economic_loss$event, loss=fi
 <p>For the analysis of the casualty data the filtered data was first sorted.</p>
 <pre class="r"><code>filtered_human_loss &lt;- filtered_human_loss[order(filtered_human_loss$loss, decreasing=TRUE),]
 final_human_loss &lt;- data.frame(event=filtered_human_loss$event, loss=filtered_human_loss$loss)</code></pre>
-<p>Finally the top five events were plotted in a bar graph.</p>
+<p>Finally the top five events were plotted in a bar graph. As can be seen from the bar graph tornados are by far the leading cause of weather casualties.</p>
 <pre class="r"><code>plotting_data &lt;- final_human_loss$loss[1:5]
 plotting_labels &lt;- final_human_loss$event[1:5]
 barplot(plotting_data, names.arg=plotting_labels, xlab=&quot;Weather Events&quot;, ylab=&quot;Total Human Casualties&quot;, main=&quot;Total Human Casualties per Type of Weather Event&quot;, yaxp=c(0,100000,5))</code></pre>
@@ -216,7 +218,7 @@ barplot(plotting_data, names.arg=plotting_labels, xlab=&quot;Weather Events&quot
 <p>For the analysis of the damage data the filtered data was first sorted.</p>
 <pre class="r"><code>filtered_economic_loss &lt;- filtered_economic_loss[order(filtered_economic_loss$loss, decreasing=TRUE),]
 final_economic_loss &lt;- data.frame(event=filtered_economic_loss$event, loss=filtered_economic_loss$loss)</code></pre>
-<p>Finally the top five events were plotted in a bar graph.</p>
+<p>Finally the top five events were plotted in a bar graph. The plot shows floods as the causing the most property damage, but hurricanes also cause a significant amount of damage.</p>
 <pre class="r"><code>plotting_data &lt;- final_economic_loss$loss[1:5]
 plotting_labels &lt;- final_economic_loss$event[1:5]
 barplot(plotting_data, names.arg=plotting_labels, xlab=&quot;Weather Events&quot;, ylab=&quot;Total Cost (dollars)&quot;, main=&quot;Total Ecomonic Damage per Type of Weather Event&quot;, yaxp=c(0,180000000000,5))</code></pre>

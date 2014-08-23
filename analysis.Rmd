@@ -6,6 +6,7 @@
 <br />
 
 ### Synopsis
+Every year extreme weather in America caused a significant amount of casualties and damage to property. The purpose of this analysis was to calculate the amount of casualties and damage for different types of weather events. The data for this analysis was obtained from the NOAA storm database showing severe weather events from 1950 to November 2011. The results show tornados as the leading cause of casualties and floods as the leading cause of damage. It it recommended that the majority of money spent monitoring weather conditions should be allocated to tornados, floods, and hurricanes because they have the greatest effect on property and people.
 
 <br />
 
@@ -196,7 +197,7 @@ filtered_human_loss <- filtered_human_loss[order(filtered_human_loss$loss, decre
 final_human_loss <- data.frame(event=filtered_human_loss$event, loss=filtered_human_loss$loss)
 ```
 
-Finally the top five events were plotted in a bar graph.
+Finally the top five events were plotted in a bar graph. As can be seen from the bar graph tornados are by far the leading cause of weather casualties.
 ```{r}
 plotting_data <- final_human_loss$loss[1:5]
 plotting_labels <- final_human_loss$event[1:5]
@@ -216,7 +217,7 @@ filtered_economic_loss <- filtered_economic_loss[order(filtered_economic_loss$lo
 final_economic_loss <- data.frame(event=filtered_economic_loss$event, loss=filtered_economic_loss$loss)
 ```
 
-Finally the top five events were plotted in a bar graph.
+Finally the top five events were plotted in a bar graph. The plot shows floods as the causing the most property damage, but hurricanes also cause a significant amount of damage.
 ```{r}
 plotting_data <- final_economic_loss$loss[1:5]
 plotting_labels <- final_economic_loss$event[1:5]
